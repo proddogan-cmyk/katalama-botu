@@ -41,7 +41,7 @@ app.use(cors());
 app.use(express.json());
 
 // Production: Frontend static dosyalarını sun
-const frontendDist = path.join(__dirname, '..', '..', 'frontend', 'dist');
+const frontendDist = path.join(__dirname, '..', 'public');
 if (fs.existsSync(frontendDist)) {
   app.use(express.static(frontendDist));
 }
