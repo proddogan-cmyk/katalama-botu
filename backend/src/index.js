@@ -23,9 +23,11 @@ import ArbitrageEngine from './strategies/arbitrage.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Log dizini
+// Log ve data dizinleri
 const logDir = path.join(__dirname, '..', 'logs');
 if (!fs.existsSync(logDir)) fs.mkdirSync(logDir, { recursive: true });
+const dataDir = path.join(__dirname, '..', 'data');
+if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 
 const logger = createLogger({
   level: 'info',
