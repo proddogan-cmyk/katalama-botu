@@ -1,4 +1,6 @@
-FROM node:23-alpine
+FROM node:20-slim
+
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -9,6 +11,4 @@ COPY backend/ ./
 
 RUN mkdir -p data logs
 
-EXPOSE 3001
-
-CMD ["node", "--experimental-sqlite", "src/index.js"]
+CMD ["node", "src/index.js"]

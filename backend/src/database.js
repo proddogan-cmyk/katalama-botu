@@ -1,4 +1,4 @@
-import { DatabaseSync } from 'node:sqlite';
+import Database from 'better-sqlite3';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';
@@ -14,9 +14,9 @@ export function initDatabase(dbPath) {
   const dir = path.dirname(resolvedPath);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
-  db = new DatabaseSync(resolvedPath);
-  db.exec('PRAGMA journal_mode = WAL');
-  db.exec('PRAGMA foreign_keys = ON');
+  db = new Database(resolvedPath);
+  db.pragma('journal_mode = WAL');
+  db.pragma('foreign_keys = ON');
 
   createTables();
   insertDefaultSettings();
